@@ -2,7 +2,7 @@
 
 The top right screen of the simulator shows the current/best miles driven without incident. Incidents include exceeding acceleration/jerk/speed, collision, and driving outside of the lanes. Each incident case is also listed below in more detail.
 
-![Driving](images/driving.png)
+![millas](Multimedia/millas.png)
 
 ```
 function test() {
