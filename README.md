@@ -43,6 +43,9 @@ i simply set the car s to te end path in order to avoid collisions.
             }
 ```
 
+I also check if there are cars in the left or the right in order to avoid collisions.
+
+
 ## The car stays in its lane, except for the time between changing lanes.
 
 The car doesn't spend more than a 3 second length out side the lane lanes during changing lanes, and every other time the car stays inside one of the 3 lanes on the right hand side of the road.
