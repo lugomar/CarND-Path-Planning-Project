@@ -2,22 +2,59 @@
 
 The top right screen of the simulator shows the current/best miles driven without incident. Incidents include exceeding acceleration/jerk/speed, collision, and driving outside of the lanes. Each incident case is also listed below in more detail.
 
+
+```
+function test() {
+  console.log("notice the blank line before this function?");
+}
+```
+
 ## The car drives according to the speed limit.
 
 The car doesn't drive faster than the speed limit. Also the car isn't driving much slower than speed limit unless obstructed by traffic.
+
+```
+function test() {
+  console.log("notice the blank line before this function?");
+}
+```
 
 ## Max Acceleration and Jerk are not Exceeded.
 
 The car does not exceed a total acceleration of 10 m/s^2 and a jerk of 10 m/s^3.
 
+```
+function test() {
+  console.log("notice the blank line before this function?");
+}
+```
+
 ## Car does not have collisions.
 
 The car must not come into contact with any of the other cars on the road.
+
+```
+function test() {
+  console.log("notice the blank line before this function?");
+}
+```
 
 ## The car stays in its lane, except for the time between changing lanes.
 
 The car doesn't spend more than a 3 second length out side the lane lanes during changing lanes, and every other time the car stays inside one of the 3 lanes on the right hand side of the road.
 
+```
+function test() {
+  console.log("notice the blank line before this function?");
+}
+```
+
 ## The car is able to change lanes
 
 The car is able to smoothly change lanes when it makes sense to do so, such as when behind a slower moving car and an adjacent lane is clear of other traffic.
+
+```
+function test() {
+  console.log("notice the blank line before this function?");
+}
+```
