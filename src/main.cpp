@@ -249,10 +249,10 @@ int main() {
             if (prev_size > 0) {
               car_s = end_path_s;
             }
-			double target_x = 32.0;
+			double desired_x = 30.0;
 			double diff_v = 0;
-            double speed = 49;
-            double acc = .25;
+            double speed = 49.4;
+            double acc = .224;
 			tk::spline sline;
           	vector<double> points_x;
             vector<double> points_y;
@@ -304,7 +304,7 @@ int main() {
 	            double other_car_s = sensor_fusion[i][5];
                 double other_car_d = sensor_fusion[i][6];
 				//  its future predicted Frenet s value will be its current s value plus its (transformed) total velocity (m/s) multiplied by the time elapsed into the future (s).
-                double new_other_car_s = other_car_s+((double)prev_size*0.03*sqrt(other_car_vx*other_car_vx + other_car_vy*other_car_vy));
+                double new_other_car_s = other_car_s+((double)prev_size*0.02*sqrt(other_car_vx*other_car_vx + other_car_vy*other_car_vy));
 				int position_other_car = -100;
 				// check d the lane 
 				if ( other_car_d >= 0 && other_car_d < 3.5) { 
@@ -324,7 +324,7 @@ int main() {
 					}
 				}
 				if(L && F && R){
-					break;  // we can already 3 option to make a decision so break the loop
+				//	break;  // we can already 3 option to make a decision so break the loop
 				}
             }
 			// logic, what we gonna do?
@@ -368,8 +368,8 @@ int main() {
 			// set the poin to sline
             sline.set_points(points_x, points_y);
 
-            double target_y = sline(target_x);
-            double target_dist = sqrt(target_x*target_x + target_y*target_y);
+            double desired_y = sline(desired_x);
+            double dist = sqrt(desired_x*desired_x + desired_y*desired_y);
 			// generate 50 poins in the future
             for( int i = 1; i < 50 - prev_size; i++ ) {
 				// add the velocity deifference
@@ -377,9 +377,13 @@ int main() {
 				//  dont let velocity > limit
 				if ( ref_vel > speed ) {
 					ref_vel = speed;
+				}else if(ref_vel < acc){
+					ref_vel = acc;
 				}  			    	
 				// increment
-				double new_shift_x = old_shift_x + target_x/(target_dist/(0.008*ref_vel));
+				
+              double new_shift_x = old_shift_x + desired_x/(dist/(0.02*ref_vel/2.24));
+				//double new_shift_x = old_shift_x + desired_x/(dist/(0.008*ref_vel));
 				double new_shift_y = sline(new_shift_x);
 				// save increment
 				old_shift_x = new_shift_x;
